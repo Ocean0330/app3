@@ -1,0 +1,16 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "incremental": true, // 启用增量编译
+    "tsBuildInfoFile": "./build/.tsbuildinfo",// 指定构建信息文件路径,
+    "types":["vite/client"],
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    //"erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    //"noUncheckedSideEffectImports": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/route/index.js"]
+}

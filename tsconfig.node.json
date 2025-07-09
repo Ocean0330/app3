@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "incremental": true, // 启用增量编译
+    "tsBuildInfoFile": "./build/.tsbuildinfo",// 指定构建信息文件路径
+    "target": "es6",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "types":["vite/client"],
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    //"erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    //"noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}
