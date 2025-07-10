@@ -1,7 +1,11 @@
 import axios from 'axios'
 
-const service = axios.create({
-  baseURL: '/api'
-})
+axios.post('/login',)
+    .then(function (response:any) {
+        console.log(response);
+    })
+    .catch(function (error:any) {
+        console.error('Error during login:', error);
+        console.log('再次检查你的输入.',error);})
 
-export default service
+export default axios
