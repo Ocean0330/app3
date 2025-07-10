@@ -21,15 +21,15 @@ class Response {
 
   // 登录
 app.post('/login', (req, res) => {
-    let sql = `select * from userinfo where username = '${req.body.username}'`
+    console.log(req.body)
+    let sql = `select * from usersinfo where idCardNumber = '${req.body.idCardNumber}' `
     conMysql(sql).then(result => {
       if (result[0]?.password === req.body.password) {
         let response = new Response(true, '登录成功', 200, result)
         res.send(response)
       } else {
         let response = new Response(false, '用户名或密码错误', 400)
-        res.status(400).send(response)
-      }
+        res.status(400).send(response)}
     }).catch(err => {
       res.status(500).send('数据库连接出错!')
     })
@@ -37,7 +37,7 @@ app.post('/login', (req, res) => {
 
   // 修改密码
 app.post('/updatePassword', (req, res) => {
-    let sql = `update userinfo set password = '${req.body.newPassword}' where username = '${req.body.username}'`
+    let sql = `update usersinfo set password = '${req.body.newPassword}' where username = '${req.body.username}'`
     conMysql(sql).then(result => {
       if (result.affectedRows == 1) {
         let response = new Response(true, '修改成功', 200, result)
@@ -53,7 +53,7 @@ app.post('/updatePassword', (req, res) => {
 
   // 获取当前用户信息
 app.get('/getUserInfo', (req, res) => {
-    let sql = `select * from userinfo where username = '${req.query.username}'`
+    let sql = `select * from usersinfo where username = '${req.query.username}'`
     conMysql(sql).then(result => {
       let response = new Response(true, '获取成功', 200, result)
       res.send(response)
@@ -79,7 +79,7 @@ app.get('/info', (req, res) => {
 let { conMysql } = require('./mysql')
 // 获取全部用户信息，测试数据库连接的上不上
 app.get('/getUser', (req, res) => {
-  let sql = 'select * from info'
+  let sql = 'select * from uersinfo'
   conMysql(sql).then(result => {
     res.send(result)
   })
