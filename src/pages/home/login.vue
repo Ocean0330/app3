@@ -1,10 +1,19 @@
 <template>
     <div>
-        账 号:
+        身份证号码:<input type="text" v-model="form.idCardNumber">
+        <br>
+        姓名:
         <input type="text" v-model="form.username">
         <br>
-        密 码:
-        <input type="text" v-model="form.password">
+        性别:
+        <select v-model="form.gender">
+            <option value="male">男</option>
+            <option value="female">女</option>
+        </select>
+        <br>
+        密码:
+        <input type="password" v-model="form.password">
+        <br>
     </div>
     <button @click="login">登录</button>
 </template>
@@ -17,10 +26,16 @@ import { userLogin } from '../../api/user'
 
 const router = useRouter()
 const form = reactive({
+    idCardNumber: '',
     username: '',
+    gender: '',
     password: ''
 })
 const login = () => {
+    console.log(form)
+    if (!form.idCardNumber || !form.username || !form.gender || !form.password) {
+        alert('请填写所有字段')
+        return}
     userLogin(form)
         .then((res: any) => {
             alert(res.data.msg)
